@@ -10,4 +10,4 @@ spec:
   selector:
     app: wordpress
     tier: frontend
-  type: NodePort
+  type: LoadBalancer
