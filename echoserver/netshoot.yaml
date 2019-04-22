@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: default
+  name: netshoot
+  labels:
+    app: netshoot
+spec:
+  selector:
+    matchLabels:
+      app: netshoot
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: netshoot
+    spec:
+      containers:
+      - image: nicolaka/netshoot
+        name: netshoot
+        command: ["ping","localhost"]

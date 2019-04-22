@@ -1,0 +1,15 @@
+apiVersion: skaffold/v1alpha5
+kind: Config
+build:
+  artifacts:
+  - image: eu.gcr.io/devoxx-morocco/guestbook
+    context: ./guestbook-app/
+  - image: eu.gcr.io/devoxx-morocco/redis-slave
+    context: ./redis-slave/
+deploy:
+  kubectl:
+    manifests:
+    - ./guestbook-app/k8s/*
+    - ./redis-slave/k8s/*
+    - ./manifests/deployments/redis*
+    - ./manifests/services/redis*
